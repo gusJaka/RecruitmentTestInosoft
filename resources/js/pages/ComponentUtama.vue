@@ -1,237 +1,19 @@
 <template>
     <div>
         <div class="col-12 p-3">
-            <h2>3rd Party Instruction</h2>
-            <div class="card space-bottom">
-                <div class="card mx-3 my-3">
-                    <div class="card-header bg-white p-0">
-                        <div class="row">
-                            <div class="col-12 row">
-                                <div class="col-lg-11">
-                                    <div class="btn-group" role="group">
-                                        <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" v-model="instruction" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Service Instruction" />
-                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <li>
-                                                <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
-                                            </li>
-                                            <li>
-                                                <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-1 icon-center mt-2">
-                                    <span class="badge text-black border rounded-pill instruction-badge" style="display: inline-block; width: 100px">
-                                        Draft
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <form>
-                            <div class="row mx-0 my-3">
-                                <!-- baris kosong -->
-                                <div class="col-lg-2" />
-                                <!-- baris tengah -->
-                                <div class="col-lg-8" style="padding-right:20px; border-right: 1px solid #ccc;">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label>Assigned Vendor</label>
-                                            <select class="form-select" v-model="vendor">
-                                                <option selected disabled>Enter Vendor</option>
-                                                <option value="Co Ltd">Amarit & Asociates Co ltd</option>
-                                                <option value="Logistic">Amarit & Asociates Logistic Co ltd</option>
-                                                <option value="Alphatrans">Alphatrans Pte Ltd</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <label for="attention">Attention Of</label>
-                                            <input id="attention" v-model="attention" class="form-control" type="text" placeholder="Enter Attention Of">
-                                        </div>
-                                        <div class="col-3">
-                                            <label for="quotation">Quotation Of</label>
-                                            <input id="quotation" v-model="quotation" class="form-control" type="text" placeholder="Enter Quotation Of">
-                                        </div>
-                                        <div class="col-3">
-                                            <label>Invoice To</label>
-                                            <select class="form-select" v-model="invoice">
-                                                <option selected disabled>Select an Option</option>
-                                                <option value="LLS">Marubeni-Itochu Tubulars Middle East Pipes L.L.S (MITME)</option>
-                                                <option value="PLC">Marubeni-Itochu Tubulars Europe Plc (MITME)</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label>Vendor Address</label>
-                                            <select class="form-select" v-model="address">
-                                                <option selected disabled>Enter Vendor Address</option>
-                                                <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="col-12">
-                                        <label>Customer - Contract</label>
-                                        <select class="form-select" v-model="contract">
-                                            <option selected disabled>Select Customer</option>
-                                            <option value="Hail & Ghasha">Hail & Ghasha</option>
-                                            <option value="OFFSHORE">OFFSHORE</option>
-                                            <option value="ONSHORE">ONSHORE</option>
-                                            <option value="Sour Gas">Sour Gas</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="po">Customer PO No.</label>
-                                        <input id="po" class="form-control" v-model="poNo" type="text" placeholder="Enter Customer PO">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-body bg-white p-0">
-                        <div class="h4 bold mx-3 pt-3">Cost Detail</div>
-                        <table class="table my-0">
-                            <thead class="table-head text-light">
-                            <tr>
-                                <th width="12%">
-                                    <div class="d-inline-flex">
-                                        Description
-                                    </div>
-                                </th>
-                                <th width="7%">
-                                    <div class="d-inline-flex">
-                                        QTY
-                                    </div>
-                                </th>
-                                <th width="8%">
-                                    <div class="d-inline-flex">
-                                        UOM
-                                    </div>
-                                </th>
-                                <th width="12%">
-                                    <div class="d-inline-flex">
-                                        Unit Price
-                                    </div>
-                                </th>
-                                <th width="8%">
-                                    <div class="d-inline-flex">
-                                        Discount (%)
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="d-inline-flex">
-                                        GST/VAT(%)
-                                    </div>
-                                </th>
-                                <th><div class="d-inline-flex"></div></th>
-                                <th width="10%">
-                                    <div class="d-inline-flex">
-                                        Currency
-                                    </div>
-                                </th>
-                                <th width="8%" class="text-right">
-                                    <div class="d-inline-flex">
-                                        VAT Amount
-                                    </div>
-                                </th>
-                                <th width="8%" class="text-right">
-                                    <div class="d-inline-flex">
-                                        Sub Total
-                                    </div>
-                                </th>
-                                <th width="8%" class="text-right">
-                                    <div class="d-inline-flex">
-                                        Total
-                                    </div>
-                                </th>
-                                <th width="14%">
-                                    <div class="d-inline-flex">
-                                        Charge To
-                                    </div>
-                                </th>
-                                <th><div class="d-inline-flex"></div></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="(cost, index) in costs" :key="index">
-                                <td><input id="desc" class="form-control" type="text" v-model="cost.description" placeholder="Enter Description"></td>
-                                <td><input id="qty" class="form-control" type="number" v-model="cost.qty" placeholder="Enter"></td>
-                                <td><select v-model="cost.shp" class="form-select">
-                                    <option selected>SHP</option>
-                                </select></td>
-                                <td><input id="unitPrice" class="form-control" type="text" v-model="cost.unitPrice" placeholder="Enter Unit Price"></td>
-                                <td><input id="discount" class="form-control" type="number" v-model="cost.discount" placeholder="0"></td>
-                                <td><input id="gst" class="form-control" type="number" v-model="cost.GST" placeholder="0"></td>
-                                <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
-                                <td><select class="form-select" id="currency" v-model="cost.currency" >
-                                    <option selected disabled></option>
-                                    <option value="AED">AED</option>
-                                    <option value="USD">USD</option>
-                                </select></td>
-                                <td class="text-right text-middle">{{getVAT(index)}}</td>
-                                <td class="text-right text-middle">{{getSubTotal(index)}}</td>
-                                <td class="text-right text-middle">{{getTotal(index)}}</td>
-                                <td><select class="form-select" v-model="cost.mitme">
-                                    <option selected disabled>Select an Option</option>
-                                    <option value="MITME">MITME</option>
-                                    <option value="Customer">Customer</option>
-                                </select></td>
-                                <td><custom-button btn_class="btn btn-secondary h-auto" @btnClick="deleteCost(index, cost)" icon_class="fas fa-minus"/></td>
-                            </tr>
-
-                            <tr class="white-border">
-                                <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
-                                <td><b>AED</b> (Total)</td>
-                                <td class="text-right">
-                                    <p class="text-right" v-if="costs.currency==='AED'">{{getVAT}}</p>
-                                    <p class="text-right" v-else-if="costs.currency==='USD'">{{currencyVAT}}</p>
-                                    <p class="text-right" v-else>0.00</p>
-                                </td>
-                                <td>
-                                    <p class="text-right" v-if="costs.currency==='AED'">{{getTotal}}</p>
-                                    <p class="text-right" v-else-if="costs.currency==='USD'">{{currencyResult}}</p>
-                                    <p class="text-right" v-else>0.00</p>
-                                </td>
-                                <td>
-                                    <p class="text-right" v-if="costs.currency==='AED'">{{getTotal}}</p>
-                                    <p class="text-right" v-else-if="costs.currency==='USD'">{{currencyResult}}</p>
-                                    <p class="text-right" v-else>0.00</p>
-                                </td>
-                                <td rowspan="2"></td>
-                                <td rowspan="2" class="icon-center"><custom-button @btnClick="addCost" btn_class="btn btn-info h-auto" icon_class="fas fa-plus"/></td>
-                            </tr>
-
-                            <tr class="white-border">
-                                <td><b>USD</b> (Total)</td>
-                                <td class="text-right">
-                                    <p class="text-right" v-if="costs.currency==='USD'">{{getVAT}}</p>
-                                    <p class="text-right" v-else-if="costs.currency==='AED'">{{currencyVAT}}</p>
-                                    <p class="text-right" v-else>0.00</p>
-                                </td>
-                                <td>
-                                    <p class="text-right">{{getAllSubTotal}}</p>
-                                </td>
-                                <td>
-                                    <p class="text-right" v-if="costs.currency==='USD'">{{getTotal}}</p>
-                                    <p class="text-right" v-else-if="costs.currency==='AED'">{{currencyResult}}</p>
-                                    <p class="text-right" v-else>0.00</p>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <h4 class="px-3">3rd Party Instruction</h4>
+            <div class="card mx-3 my-3">
+                <div class="card-header bg-white p-0">
+                    <component-a/>
                 </div>
-            </div>
-
-            <div class="card space-bottom">
+                <div class="card-body bg-white p-0">
+                    <component-b/>
+                </div>
                 <div class="row mx-0 my-3">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
-                        <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
-                        <!-- <router-link :to="{name: 'DetailInstruction'}" class="dropdown"> -->
-                        <button type="submit" class="icon-center btn btn-info text-light p-0 px-2">Submit</button>
-                        <!-- </router-link> -->
+                        <custom-button class="icon-center" btn_class="btn py-2" label="Cancel"/>
+                        <custom-button class="button-size icon-center" btn_class="btn border py-2" label="Save As Draft"/>
+                        <button type="submit" class="button-size icon-center btn btn-info text-light p-0 px-2">Submit</button>
                     </div>
                 </div>
             </div>
@@ -240,127 +22,27 @@
 </template>
 
 <script>
+    import ComponentA from "../components/ComponentA";
     import ComponentB from "../components/ComponentB";
     import CustomButton from "../components/sub-components/CustomButton";
     export default {
-        components: {ComponentB,CustomButton},
-        data(){
-            return{
-                instruction: "Service Instruction",
-                vendor: "Enter Vendor",
-                attention: "",
-                quotation: "",
-                invoice: "Select an Option",
-                address: "Enter Vendor Address",
-                contract: "Select Customer",
-                poNo: "",
-                description: "",
-                uom: "",
-                arrresult:[{res : 0}],
-                costs:[{
-                    description: "",
-                    qty: 0,
-                    shp: "SHP",
-                    unitPrice: "",
-                    discount: 0,
-                    currency: "",
-                    GST: 0,
-                    mitme: "Select an Option",
-                }],
-
-                result :0,
-                files: [],
-                notes: "",
-                linked: "Select Item",
-            }
-        },
-        methods: {
-            onFileSelected(event){
-                console.log(event)
-            },
-            onFileChange(e) {
-                this.files = e.target.files;
-                console.log(this.files);
-            },
-            currentDateTime() {
-                const current = new Date();
-                const date = current.getDate() + '/' + (current.getMonth() + 1) + '/' + current.getFullYear();
-                const time = current.getHours() + ":" + current.getMinutes();
-                if (current.getHours() >= 12) {
-                    return date + " " + time + " PM";
-                } else {
-                    return date + " " + time + " AM";
-                }
-            },
-            deleteFile(index) {
-                this.files = Array.prototype.slice.call(this.files)
-                this.files.splice(index, 1);
-            },
-            deleteCost(index) {
-                this.costs = Array.prototype.slice.call(this.costs)
-                this.costs.splice(index, 1);
-            },
-            addCost() {
-                this.costs.push({
-                    description: "",
-                    qty: 0,
-                    shp: "SHP",
-                    unitPrice: "",
-                    discount: 0,
-                    currency: "",
-                    GST: 0,
-                    mitme: "Select an Option",
-                });
-            },
-        },
-        computed:{
-            getTotal(){
-                return index => {
-                    const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
-                    const gst = ((((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)*this.costs[index].GST)/100)
-                    return (((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)+gst).toFixed(2)
-                }
-            },
-            getSubTotal(){
-                return index => {
-                    const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
-                    return ((this.costs[index].qty * (this.costs[index].unitPrice)) - discount).toFixed(2)
-                }
-            },
-            getVAT(){
-                return index => {
-                    const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
-                    return ((((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)*this.costs[index].GST)/100).toFixed(2)
-                }
-            },
-            currencyResult() {
-                return (this.getTotal * 3.6725).toFixed(2);
-            },
-            currencyVAT(){
-                return (this.getVAT * 3.6725).toFixed(2);
-            },
-            getAllSubTotal(){
-                let reslt = 0
-                for (let i = 0; i < this.costs.length; i++) {
-                    if(this.costs[i].currency === ""){
-                        reslt = 0
-                    }
-                    else if (this.costs[i].currency === "USD"){
-                        const discount = ((this.costs[i].qty * (this.costs[i].unitPrice)) * this.costs[i].discount / 100)
-                        reslt = ((this.costs[i].qty * (this.costs[i].unitPrice)) - discount)
-                    }
-                    else {
-                        const discount = ((this.costs[i].qty * (this.costs[i].unitPrice)) * this.costs[i].discount / 100)
-                        reslt = ((this.costs[i].qty * (this.costs[i].unitPrice)) - discount)
-                    }
-                }
-                // for (let i = 0; i < this.arrresult.length; i++){
-                //     this.result = parseInt(this.result) + this.arrresult[i].res
-                // }
-                // console.log(this.arrresult)
-                this.result += reslt
-                return this.result.toFixed(2)
-            }
-        }
+        components: {ComponentB,CustomButton,ComponentA},
     }
 </script>
+
+<style scoped>
+tbody {
+    border-top: none !important;
+}
+
+.icon-center{
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+}
+.button-size{
+    height: 100%;
+    width: 10%;
+}
+</style>
