@@ -3,12 +3,15 @@
         <div class="col-12 p-3">
             <h4 class="px-3">3rd Party Instruction</h4>
             <div class="card mx-3 my-3">
+                <!--Component A to be called in the card header-->
                 <div class="card-header bg-white p-0">
                     <component-a/>
                 </div>
+                <!--Component B to be called in the card body-->
                 <div class="card-body bg-white p-0">
                     <component-b/>
                 </div>
+                <!--Button form-->
                 <form method="POST" @submit.prevent="submitInstruction()">
                     <div class="row mx-0 my-3">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -30,6 +33,7 @@
     export default {
         components: {ComponentB,CustomButton,ComponentA},
         methods:{
+            //Action when submitting
             submitInstruction(){
                 axios.post('./api/task', {
                     description: "",

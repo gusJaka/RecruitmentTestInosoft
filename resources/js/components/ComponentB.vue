@@ -6,6 +6,7 @@
         </div>
 
         <table class="table my-0">
+            <!--Table Head-->
             <thead class="table-head text-light">
             <tr>
                 <th width="12%">
@@ -68,6 +69,7 @@
             </tr>
             </thead>
             <tbody>
+            <!--for loop to add and delete the cost detail row-->
             <tr v-for="(cost, index) in costs" :key="index">
                 <td><input id="desc" class="form-control" type="text" v-model="cost.description" placeholder="Enter Description"></td>
                 <td><input id="qty" class="form-control" type="number" v-model="cost.qty" placeholder="Enter"></td>
@@ -94,6 +96,7 @@
                 <td><custom-button btn_class="btn h-auto" class="table-head" @btnClick="deleteCost(index, cost)" icon_class="fas fa-minus"/></td>
             </tr>
 
+            <!--the cost depends on the currency chosen-->
             <tr class="white-border">
                 <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                 <td><b>AED</b> (Total)</td>
@@ -170,10 +173,12 @@ export default {
         }
     },
     methods: {
+        //To Delete the cost row
         deleteCost(index) {
             this.costs = Array.prototype.slice.call(this.costs)
             this.costs.splice(index, 1);
         },
+        //To add the cost row
         addCost() {
             this.costs.push({
                 description: "",
@@ -188,6 +193,7 @@ export default {
         },
     },
     computed:{
+        //call the vuex store
         AOM:{
             get(){
                 return this.$store.state.currentDetails.AOM;
@@ -204,6 +210,7 @@ export default {
             }
         },
 
+        //get the calculation for total, sub total and VAT
         getTotal(){
             return index => {
                 const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
@@ -223,6 +230,7 @@ export default {
                 return ((((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)*this.costs[index].GST)/100).toFixed(2)
             }
         },
+        //get the calculation for all subTotal, total, and VAT for the USD currency
         getAllSubTotal(){
             let reslt = 0
             for (let i = 0; i < this.costs.length; i++) {
@@ -283,6 +291,7 @@ export default {
             return this.resultVat.toFixed(2)
         },
 
+        //get the calculation for all subTotal, total, and VAT for the AED currency
         getAllSubTotalAED(){
             let reslt = 0
             for (let i = 0; i < this.costs.length; i++) {
