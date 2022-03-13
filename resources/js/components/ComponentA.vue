@@ -113,12 +113,6 @@ tbody {
     border-top: none !important;
 }
 
-.icon-center{
-    text-align: center;
-    vertical-align: middle;
-    justify-content: center;
-    align-items: center;
-}
 .normal {
     font-weight: normal;
 }
